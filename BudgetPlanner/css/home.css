@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+  }
+  body{
+    background-color: rgb(219, 219, 219);
+  }
+  .container{
+    width: 1300px;
+    margin: auto;
+  }
+  header{
+    background-color: rgb(64, 100, 100);
+    color: #fff;
+    height: 27vh;
+  }
+  .navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2px solid #fff;
+  }
+  .menu_items a{
+    margin: 10px;
+    color: #fff;
+    font-size: 18px;
+    text-transform: capitalize;
+  }
+  .menu_items a:hover{
+    border-bottom: 1px solid #fff;
+    padding-bottom: 7px;
+  }
+  .menu_items a:active{
+    border-bottom: 1px solid #fff;
+  }
+  .navbar_acc img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .hero_section{
+    padding: 10px;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hero_section .acc_txt h3{
+    font-size: 26px;
+  }
+  .hero_section .acc_txt h5{
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+  }
+  .hero_section .acc_details{
+    display: flex;
+    align-items: center;
+  }
+  .acc_details img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 1.5rem;
+  }
+  .hero_section .updates{
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid rgba(220, 229, 218);
+    padding: 5px 10px;
+    border-radius: 50px;
+  }
+  .updates div{
+    margin-right: 1rem;
+    padding: 5px 1rem;
+    font-size: 14px;
+    border-radius: 10px;
+    background-color: rgb(220, 229, 238);
+    color: #000;
+    cursor: pointer;
+  }
+  .updates p{
+    font-size: 15px;
+  }
+  .cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 4.5rem;
+    padding: 3.5rem;
+  }
+
+  .cards li{
+    padding: 1.6rem;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: -10px;
+    display: flex;
+    width: 350px;
+    height: 170px;
+    align-items: center;
+    gap: 1.5rem;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    border: 1px solid rgb(64, 100, 100);
+    box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.50);
+
+
+  }
+
+  .cards li:hover{
+    transform: translateY(-10px);
+  }
+
+  .cards li .bx{
+    width: 5rem;
+    height: 5rem;
+    padding: 0.9rem;
+    margin-left: 30px;
+    border-radius: 10px;
+    font-size: 50px;
+    align-items: center;
+    justify-content: center;
+    color: rgb(64, 100, 100);
+    background-color: rgb(219, 219, 219);
+    border-radius: 50%;
+  }
+  .cards li .info h3{
+    font-size: 2rem;
+    font-weight: 600;
+    color: #000;
+  }
+  .cards li .info p{
+    color: rgb(64, 100, 100);
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
+  .containers{
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 100%;
+  }
+  .budget_content{
+    padding: 2rem;
+    display: flex;
+    margin-top: -40px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .error_message{
+    background-color: #d57d7d;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    width: 650px;
+    margin: 0 auto;
+    border-radius: 5px;
+    display: none;
+  }
+  .error_message.error{
+    display: block;
+    transition: all 0.8s ease-in;
+  }
+  .ur_budget form label,
+  .ur_expenses form label{
+    color: rgb(64, 100, 100);
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .ur_budget form input,
+  .ur_expenses form input
+  {
+    padding: 0.5rem 1rem;
+    width: 260px;
+    border: 1px solid rgb(220, 229, 238);
+    font-family: inherit;
+    font-size: 16px;
+    margin-left: 0.5rem;
+    border-radius: 3px;
+  }
+  .ur_budget form,
+  .ur_expenses form{
+    position: relative;
+  }
+  .budget_content .btn{
+    position: absolute;
+    right: 0;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    font-family: inherit;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(64, 100, 100);
+  }
+  .budget_content .btn:active{
+    transform: scale(0.98);
+  }
+  .table_content{
+    padding: 2rem;
+    background-color: #fff;
+    margin: -.60rem 2rem;
+    border-radius: 5px;
+  }
+
+  .tbl_tr_content{
+    display: grid;
+    list-style-type: none;
+    grid-template-columns: 1fr 50% 30% 2fr;
+    background-color: rgb(244, 244, 244);
+    color: rgb(64, 100, 100);
+    padding: .3rem .5rem;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .tbl_tr_content li{
+    padding: 5px;
+    font-weight: bold;
+  }
+  .tbl_data{
+    overflow-y: auto;
+    height: 200px;
+  }
+  
+  .tbl_data h3{
+    color: #000;
+    font-size: larger;
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .tbl_tr_content button{
+    outline: none;
+    border: none;
+    color: #fff;
+    padding: 0.4rem;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #d57d7d;
+  }
+  .tbl_tr_content button i{
+    font-size: medium;
+    justify-content: center;
+  }
+  .tbl_tr_content button:active{
+    transform: scale(0.98);
+  }
+  .tbl_tr_content button:first-child{
+    background-color: #b3d57d;
+    margin-left: 30px;
+  }

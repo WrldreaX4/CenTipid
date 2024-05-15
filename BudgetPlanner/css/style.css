@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f7f7f7;
+  padding: 0 10px;
+}
+
+.wave {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  z-index: -1;
+}
+
+.form-container {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto; 
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  grid-gap: 3rem; 
+}
+
+.pot {
+  margin: 20px 0;
+  color: #707070;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.img {
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center;
+}
+
+.img img {
+  max-width: 100%; /* Make sure the image fits within its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Login & SignupForm CSS Start */
+.form {
+  padding: 25px 30px;
+  margin-left: -50px;
+}
+
+.form header {
+  margin: 15px 0;
+  color: #415451;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.form form {
+  margin: 20px 0;
+}
+
+.form form .error-text {
+  color: #721c24;
+  padding: 8px 10px;
+  text-align: center;
+  border-radius: 5px;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  margin-bottom: 10px;
+  display: none;
+}
+
+.form form .name-details {
+  display: flex;
+}
+
+.form .name-details .field:first-child {
+  margin-right: 10px;
+}
+
+.form .name-details .field:last-child {
+  margin-left: 10px;
+}
+
+.form form .field {
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+  position: relative;
+}
+
+.form form .field label {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form form .input input {
+  height: 50px;
+  width: 100%;
+  font-size: 16px;
+  padding: 0 10px;
+  border-radius: 20px;
+  border: 1px solid #ffffff;
+}
+
+.form form .field input {
+  outline: none;
+}
+
+.form form .image input {
+  font-size: 17px;
+}
+
+.form form .button input {
+  height: 45px;
+  border: none;
+  color: #fff;
+  font-size: 17px;
+  background: #415451;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 13px;
+}
+
+.form form .field i {
+  position: absolute;
+  right: 15px;
+  top: 70%;
+  color: #ccc;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.form form .field i.active::before {
+  color: #333;
+  content: "\f070";
+}
+
+.form .link {
+  text-align: center;
+  margin: 15px 0;
+  font-size: 17px;
+}
+
+.form .link a {
+  color: #415451;
+}
+
+.form .link a:hover {
+  text-decoration: underline;
+}
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 768px) {
+  .form-container .img {
+    display: none; /* Hide the image on mobile devices */
+  }
+}
