@@ -15,11 +15,14 @@
     width: 1300px;
     margin: auto;
   }
+
   header{
     background-color: rgb(64, 100, 100);
     color: #fff;
-    height: 27vh;
+    height: 70vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
+
   .navbar{
     display: flex;
     justify-content: space-between;
@@ -47,12 +50,127 @@
     margin-top: 10px;
   }
 
+  .img_logo{
+    align-self: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .img_logo h1{
+    margin-top: -40px;
+    font-weight: 1000;
+    font-size: 70px;
+    letter-spacing: 1.5px;
+  }
+
+
   .img_logo img{
-    height: 160px;
-    width: 160px;
+    margin-top: 35px;
+    height: 220px;
+    width: 220px;
     border-radius: 50%;
     object-fit: cover;
     justify-content: center;
-    position: absolute;
 
   }
+
+  .about{
+    margin-top: 13%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 50vh;
+  }
+
+  .about h1{
+    font-weight: bolder;
+    font-size: 50px;
+    color:  rgb(64, 100, 100);
+  }
+
+  .about p{
+    width: 1000px;
+    font-size: 20px;
+    color: rgb(64, 100, 100);
+    margin: 0 auto;
+
+  }
+
+
+/*cards*/
+
+  .card_container {
+    background-color: rgb(64, 100, 100);
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    justify-content: center;
+    text-align: center;
+    align-items: flex-start;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.3);
+    height: 130vh;
+}
+
+.card_container h1{
+  text-align: center;
+  align-self: center;
+  align-items: center;
+  position: absolute;
+  font-weight: bolder;
+  font-size: 50px;
+  top: 1030px;
+
+
+}
+
+.card_container .boni,
+.card_container .gwen,
+.card_container .jape,
+.card_container .andrea,
+.card_container .edmar {
+    margin-top: 180px;
+    flex: 0 0 auto;
+    width: 260px; 
+    text-align: center;
+    color: #000;
+    height: 600px;
+}
+
+.pfp {
+    width: 100%;
+    height: auto; 
+}
+.card_container div {
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+
+/*contacts*/
+
+.contacts{
+  padding-top: 30px;
+  margin-bottom: 40px;
+  background-color: #fff;
+  height: 20vh;
+
+}
+
+.contacts h3 {
+  text-align: center;
+  align-self: center;
+  align-items: center;
+  color: rgb(64, 100, 100);
+}
+
+.contacts p{
+  text-align: center;
+  align-self: center;
+  align-items: center;
+  color: rgb(64, 100, 100);
+}
+
