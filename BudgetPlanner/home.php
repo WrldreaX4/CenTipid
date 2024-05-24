@@ -122,20 +122,8 @@ if (mysqli_num_rows($result) > 0) {
                 <section class="table_content">
                     <div class="tbl_data">
                         <h3>Budget Table</h3>
-                        <!-------<ul class="tbl_tr_content">
-                            <li>1</li>
-                            <li>Keyboard</li>
-                            <li>$ <span>900</span></li>
-                            <li>
-                                <button type="button" class="btn_edit">
-                                <i class="bx bx-pen"></i>
-                                </button>
-                                <button type="button" class="btn_delete">
-                                <i class="bx bx-trash"></i>
-                                </button>
-                            </li>
-
-                        </ul>----->
+                        <form class
+                       
                     </div>
                 </section>
         </div>

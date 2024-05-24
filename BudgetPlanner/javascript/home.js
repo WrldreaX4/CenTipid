@@ -1,6 +1,6 @@
 const errorMesgEl = document.querySelector('.error_message');
 const budgetInputEl = document.querySelector('.budget_input');
-const expensesDelEl = document.querySelector('.expenses_input');
+const expensesDescEl = document.querySelector('.expenses_input');
 const expensesAmountEl = document.querySelector('.expenses_amount');
 const tblRecordsEl = document.querySelector('.tbl_data');
 const cardsContainerEl = document.querySelector('.cards');
@@ -16,32 +16,29 @@ function btnEvents() {
     const btnBudgetCal = document.querySelector('#btn_budget');
     const btnExpensesCal = document.querySelector('#btn_expenses');
 
-    btnBudgetCal.addEventListener('click',(e) => {
+    btnBudgetCal.addEventListener('click', (e) => {
         e.preventDefault();
         budgetFun();
-    })
+    });
 
-    btnExpensesCal.addEventListener('click',(e) => {
+    btnExpensesCal.addEventListener('click', (e) => {
         e.preventDefault();
         expensesFun();
-    })
+    });
 }
 
 document.addEventListener("DOMContentLoaded", btnEvents);
 
 function expensesFun() {
-    let expensesDescValue = expensesDelEl.value;
+    let expensesDescValue = expensesDescEl.value;
     let expensesAmountValue = expensesAmountEl.value;
 
-    if(expensesDescValue == ""  || 
-        expensesAmountValue == "" || 
-        budgetInputEl < 0) {
+    if (expensesDescValue === "" || expensesAmountValue === "" || expensesAmountValue < 0) {
         alert("Please Enter Expenses Name or Amount");
-
     } else {
         let amount = parseInt(expensesAmountValue);
         expensesAmountEl.value = "";
-        expensesDelEl.value = "";
+        expensesDescEl.value = "";
 
         let expenses = {
             id: itemId,
@@ -58,76 +55,81 @@ function expensesFun() {
 }
 
 function addExpenses(expensesPara) {
-    const html = `<ul class="tbl_tr_content">
-    <li data-id=${expensesPara.id}>${expensesPara.id}</li>
-    <li>${expensesPara.title}</li>
-    <li>₱ <span>${expensesPara.amount}</span></li>
-    <li>
-        <button type="button" class="btn_edit"> Edit
-        </button>
-        <button type="button" class="btn_delete"> Delete
-        </button>
-    </li>
-</ul>`;
+    const html = `
+        <ul class="tbl_tr_content" data-id="${expensesPara.id}">
+            <li>${expensesPara.id}</li>
+            <li>${expensesPara.title}</li>
+            <li>₱ <span>${expensesPara.amount}</span></li>
+            <li>
+                <button type="button" class="btnEdit">Edit</button>
+                <button type="button" class="btnDel">Delete</button>
+            </li>
+        </ul>
+    `;
 
-tblRecordsEl.insertAdjacentHTML('beforeend', html);
+    tblRecordsEl.insertAdjacentHTML('beforeend', html);
 
-const btnEdit = document.querySelectorAll('btn_edit');
-const btnDel = document.querySelectorAll('btn_delete');
-const contentId = document.querySelectorAll('.tbl_tr_content');
-
-btnEdit.forEach((btnEdit) => {
-    btnEdit.addEventListener('click', (el) => {
-        let id;
-        contentId.forEach((ids) => {
-            id = ids.firstElementChild.dataset.id;
+    document.querySelectorAll('.btnEdit').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            editExpenses(e);
         });
-        let element = el.target.parentElement.parentElement;
-        element.remove();
-
-        let expenses = itemList.filter(function (item) {
-            return item.id == id;
-        });
-
-        expensesDelEl.value = expenses[0].title;
-        expensesAmountEl.value = expenses[0].amount;
-
-        let temp_list = itemList.filter(function (item) {
-            return item.id !== id;
-        });
-
-        itemList = temp_list;
     });
-});
 
-btnDel.forEach((btnDel) => {
-    btnDel.addEventListener('click', (el) => {
-        let id;
-        contentId.forEach((ids) => {
-            id = ids.firstElementChild.dataset.id;
+    document.querySelectorAll('.btnDel').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            deleteExpenses(e);
         });
-        let element = el.target.parentElement.parentElement;
-        element.remove();
-
-        let temp_list = itemList.filter(function (item) {
-            return item.id !== id;
-        });
-        
-        itemList = temp_list;
-        showBalance();
     });
-});
-
 }
 
+function editExpenses(event) {
+    let element = event.target.closest('.tbl_tr_content');
+    let id = element.dataset.id;
+
+    let expense = itemList.find(item => item.id == id);
+
+    if (expense) {
+        expensesDescEl.value = expense.title;
+        expensesAmountEl.value = expense.amount;
+
+        const btnSaveEdit = document.createElement('button');
+        btnSaveEdit.textContent = 'Save Edit';
+        btnSaveEdit.classList.add('btnSaveEdit');
+        document.querySelector('.ur_expenses').appendChild(btnSaveEdit);
+
+        btnSaveEdit.addEventListener('click', (e) => {
+            e.preventDefault();
+            expense.title = expensesDescEl.value;
+            expense.amount = parseInt(expensesAmountEl.value);
+
+            element.querySelector('li:nth-child(2)').textContent = expense.title;
+            element.querySelector('li:nth-child(3) span').textContent = expense.amount;
+
+            expensesDescEl.value = '';
+            expensesAmountEl.value = '';
+            btnSaveEdit.remove();
+
+            showBalance();
+        });
+    }
+}
+
+function deleteExpenses(event) {
+    let element = event.target.closest('.tbl_tr_content');
+    let id = element.dataset.id;
+
+    itemList = itemList.filter(item => item.id != id);
+    element.remove();
+
+    showBalance();
+}
 
 function budgetFun() {
-
     const budgetValue = budgetInputEl.value;
 
-    if (budgetValue == "" || budgetValue < 0){
+    if (budgetValue === "" || budgetValue < 0) {
         alert("Please enter your budget value");
-    }else {
+    } else {
         budgetCardEl.textContent = budgetValue;
         budgetInputEl.value = "";
         showBalance();
@@ -143,21 +145,20 @@ function showBalance() {
 function totalExpenses() {
     let total = 0;
 
-    if(itemList.length > 0) {
-        total = itemList.reduce(function(acc, curr){
+    if (itemList.length > 0) {
+        total = itemList.reduce((acc, curr) => {
             acc += curr.amount;
             return acc;
-
-        }, 0)
+        }, 0);
     }
     expensesCardEl.textContent = total;
     return total;
 }
 
-    function errorMessage(message){
-        alert = `<p>${message}</p>`;
-        errorMesgEl.classList.add("error");
-        setTimeout(() => {
-            errorMesgEl.classList.remove("error");
-        }, 2500);
-    }
+function errorMessage(message) {
+    errorMesgEl.innerHTML = `<p>${message}</p>`;
+    errorMesgEl.classList.add("error");
+    setTimeout(() => {
+        errorMesgEl.classList.remove("error");
+    }, 2500);
+}
